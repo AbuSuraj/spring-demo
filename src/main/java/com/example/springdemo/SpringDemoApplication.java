@@ -1,5 +1,6 @@
 package com.example.springdemo;
 
+import com.example.springdemo.ZeeCafePublisher.ZeeCafePublisher;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -7,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import com.example.springdemo.service.OrderService;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.example.springdemo"})
+@ComponentScan(basePackages = {"com.example"})
 public class SpringDemoApplication {
 
     public static void main(String[] args) {
@@ -28,9 +29,12 @@ public class SpringDemoApplication {
         System.out.println("=== Shutting Down Application ===");
 
         // Close the context to trigger @PreDestroy methods
-        ((AnnotationConfigApplicationContext) context).close();
 
         System.out.println("Application finished!");
+        ZeeCafePublisher bean = context.getBean("zeeCafePublisher",ZeeCafePublisher.class);
+        bean.streamBigBandTheory("1");
+
+        ((AnnotationConfigApplicationContext) context).close();
 
     }
 }
