@@ -13,6 +13,6 @@ public class ZeeCafePublisher {
     public void streamBigBandTheory(String episodeNo){
         System.out.println("ZeeCafe - Big Band Theory - Episode " + episodeNo);
 
-        applicationEventPublisher.publishEvent(new CoraEvent(this,episodeNo));
+        applicationEventPublisher.publishEvent(new CoraEvent(episodeNo));
     }
 }
